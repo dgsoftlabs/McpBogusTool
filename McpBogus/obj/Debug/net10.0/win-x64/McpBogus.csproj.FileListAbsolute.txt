@@ -233,3 +233,4 @@ C:\Users\dgiron\source\repos\Other\McpBogusTool\McpBogus\obj\Debug\net10.0\win-x
 C:\Users\dgiron\source\repos\Other\McpBogusTool\McpBogus\obj\Debug\net10.0\win-x64\McpBogus.pdb
 C:\Users\dgiron\source\repos\Other\McpBogusTool\McpBogus\obj\Debug\net10.0\win-x64\McpBogus.genruntimeconfig.cache
 C:\Users\dgiron\source\repos\Other\McpBogusTool\McpBogus\obj\Debug\net10.0\win-x64\ref\McpBogus.dll
+C:\Users\dgiron\source\repos\Other\McpBogusTool\McpBogus\obj\Debug\net10.0\win-x64\McpBogus.sourcelink.json

@@ -1,0 +1,48 @@
+## Ignore Visual Studio temporary files, build results, and
+## user-specific files
+
+# Build Folders
+/bin/
+/obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+
+# MonoDevelop
+.userprefs
+
+# Visual Studio Code
+.vscode/
+
+# Dotnet publish
+/publish/
+
+# NuGet
+*.nupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+
+# Runtime
+*.runtimeconfig.json
+*.runtimeconfig.*.json
+
+# Logs
+*.log
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# JetBrains Rider
+/.idea/
+
+# Generated files
+**/McpBogus.AssemblyInfo.cs

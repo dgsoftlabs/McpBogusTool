@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dgiron\\source\\repos\\Other\\McpBogusTool\\McpBogus\\McpBogus.csproj": {}
+    "c:\\Users\\dgiron\\source\\repos\\Other\\McpBogusTool\\McpBogus\\McpBogus.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dgiron\\source\\repos\\Other\\McpBogusTool\\McpBogus\\McpBogus.csproj": {
+    "c:\\Users\\dgiron\\source\\repos\\Other\\McpBogusTool\\McpBogus\\McpBogus.csproj": {
       "version": "0.1.0-beta",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dgiron\\source\\repos\\Other\\McpBogusTool\\McpBogus\\McpBogus.csproj",
+        "projectUniqueName": "c:\\Users\\dgiron\\source\\repos\\Other\\McpBogusTool\\McpBogus\\McpBogus.csproj",
         "projectName": "SampleMcpServer.win-x64",
-        "projectPath": "C:\\Users\\dgiron\\source\\repos\\Other\\McpBogusTool\\McpBogus\\McpBogus.csproj",
+        "projectPath": "c:\\Users\\dgiron\\source\\repos\\Other\\McpBogusTool\\McpBogus\\McpBogus.csproj",
         "packagesPath": "C:\\Users\\dgiron\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dgiron\\source\\repos\\Other\\McpBogusTool\\McpBogus\\obj\\",
+        "outputPath": "c:\\Users\\dgiron\\source\\repos\\Other\\McpBogusTool\\McpBogus\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages",
