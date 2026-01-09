@@ -2,8 +2,8 @@
 ## user-specific files
 
 # Build Folders
-/bin/
-/obj/
+**/bin/
+**/obj/
 
 # Visual Studio
 .vs/
