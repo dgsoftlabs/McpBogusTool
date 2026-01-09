@@ -11,6 +11,11 @@ builder.Logging.AddConsole(o => o.LogToStandardErrorThreshold = LogLevel.Trace);
 builder.Services
     .AddMcpServer()
     .WithStdioServerTransport()
-    .WithTools<RandomNumberTools>();
+    .WithTools<NumberTools>()
+    .WithTools<PersonTools>()
+    .WithTools<AddressTools>()
+    .WithTools<CompanyTools>()
+    .WithTools<TextTools>()
+    .WithTools<DateTimeTools>();
 
 await builder.Build().RunAsync();
