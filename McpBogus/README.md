@@ -29,28 +29,77 @@ cd McpBogus/McpBogus
 dotnet build
 ```
 
-### Configuration
+### Running the Project
 
-Add the server to your MCP client configuration (e.g., VS Code or Claude Desktop).
+You can run the project in several ways:
 
-**VS Code (`.vscode/mcp.json`):**
-
-```json
-{
-  "mcpServers": {
-    "McpBogus": {
-      "command": "dotnet",
-      "args": [
-        "run",
-        "--project",
-        "${workspaceFolder}/McpBogus/McpBogus.csproj"
-      ]
-    }
-  }
-}
+**Option 1: Using dotnet run**
+```bash
+cd McpBogus
+dotnet run
 ```
 
-**Claude Desktop (`claude_desktop_config.json`):**
+**Option 2: Publishing and running the executable**
+```bash
+cd McpBogus
+dotnet publish -c Release -r win-x64
+cd bin\Release\net10.0\win-x64\publish
+.\McpBogus.exe
+```
+
+**Option 3: Running from Visual Studio**
+- Open `McpBogusTool.sln` in Visual Studio
+- Set `McpBogus` as the startup project
+- Press F5 or click "Start Debugging"
+
+### Adding to VS Code as MCP Server
+
+To use McpBogus with GitHub Copilot in VS Code:
+
+1. **Create MCP configuration file** in your VS Code workspace:
+   - Create a `.vscode` folder in your workspace root (if it doesn't exist)
+   - Create a file named `mcp.json` inside the `.vscode` folder
+
+2. **Add the following configuration** to `.vscode/mcp.json`:
+
+   **For development (running from source):**
+   ```json
+   {
+     "mcpServers": {
+       "McpBogus": {
+         "command": "dotnet",
+         "args": [
+           "run",
+           "--project",
+           "C:/Users/dgiron/source/repos/Other/McpBogusTool/McpBogus/McpBogus.csproj"
+         ]
+       }
+     }
+   }
+   ```
+
+   **For production (using published executable):**
+   ```json
+   {
+     "mcpServers": {
+       "McpBogus": {
+         "command": "C:/Users/dgiron/source/repos/Other/McpBogusTool/McpBogus/bin/Release/net10.0/win-x64/publish/McpBogus.exe",
+         "args": []
+       }
+     }
+   }
+   ```
+
+3. **Restart VS Code** or reload the window (Ctrl+Shift+P → "Developer: Reload Window")
+
+4. **Verify connection**:
+   - Open GitHub Copilot Chat
+   - The McpBogus tools should now be available
+   - Try asking: "Generate a random name using McpBogus"
+
+### Adding to Claude Desktop
+
+For Claude Desktop, add to your `claude_desktop_config.json`:
 
 ```json
 {
@@ -60,8 +109,21 @@ Add the server to your MCP client configuration (e.g., VS Code or Claude Desktop
       "args": [
         "run",
         "--project",
-        "C:/Absolute/Path/To/McpBogus/McpBogus.csproj"
+        "C:/Users/dgiron/source/repos/Other/McpBogusTool/McpBogus/McpBogus.csproj"
       ]
+    }
+  }
+}
+```
+
+Or using the published executable:
+
+```json
+{
+  "mcpServers": {
+    "bogus": {
+      "command": "C:/Users/dgiron/source/repos/Other/McpBogusTool/McpBogus/bin/Release/net10.0/win-x64/publish/McpBogus.exe",
+      "args": []
     }
   }
 }
