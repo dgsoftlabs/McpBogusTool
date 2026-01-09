@@ -1,0 +1,13 @@
+{
+  "servers": {
+    "McpBogus": {
+      "type": "stdio",
+      "command": "dotnet",
+      "args": [
+        "run",
+        "--project",
+        "McpBogus/McpBogus.csproj"
+      ]
+    }
+  }
+}
