@@ -1,99 +1,115 @@
-# MCP Server
+# McpBogus 🎲
 
-This README was created using the C# MCP server project template.
-It demonstrates how you can easily create an MCP server using C# and publish it as a NuGet package.
+**McpBogus** is a Model Context Protocol (MCP) server that leverages the popular [Bogus](https://github.com/bchavez/Bogus) library to generate realistic fake data for your AI agents and MCP clients.
 
-The MCP server is built as a self-contained application and does not require the .NET runtime to be installed on the target machine.
-However, since it is self-contained, it must be built for each target platform separately.
-By default, the template is configured to build for:
-* `win-x64`
-* `win-arm64`
-* `osx-arm64`
-* `linux-x64`
-* `linux-arm64`
-* `linux-musl-x64`
+Whether you need test data for development, simple placeholders, or complex datasets, McpBogus provides a suite of tools to generate names, addresses, companies, text, and dates on the fly.
 
-If your users require more platforms to be supported, update the list of runtime identifiers in the project's `<RuntimeIdentifiers />` element.
+## ✨ Features
 
-See [aka.ms/nuget/mcp/guide](https://aka.ms/nuget/mcp/guide) for the full guide.
+- **Person Data**: Generate full names, first names, last names, emails, and phone numbers.
+- **Location Data**: Create realistic addresses including street, city, state, and zip codes.
+- **Company Info**: Generate random company names.
+- **Text & Content**: Generate "Lorem Ipsum" text for placeholders.
+- **Dates**: Get random dates within a specific range.
+- **Utility**: Random booleans, numbers, and GUIDs.
 
-Please note that this template is currently in an early preview stage. If you have feedback, please take a [brief survey](http://aka.ms/dotnet-mcp-template-survey).
+## 🚀 Getting Started
 
-## Checklist before publishing to NuGet.org
+### Prerequisites
 
-- Test the MCP server locally using the steps below.
-- Update the package metadata in the .csproj file, in particular the `<PackageId>`.
-- Update `.mcp/server.json` to declare your MCP server's inputs.
-  - See [configuring inputs](https://aka.ms/nuget/mcp/guide/configuring-inputs) for more details.
-- Pack the project using `dotnet pack`.
+- [.NET 9.0 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)
 
-The `bin/Release` directory will contain the package file (.nupkg), which can be [published to NuGet.org](https://learn.microsoft.com/nuget/nuget-org/publish-a-package).
+### Installation
 
-## Developing locally
+Clone the repository and build the project:
 
-To test this MCP server from source code (locally) without using a built MCP server package, you can configure your IDE to run the project directly using `dotnet run`.
+```bash
+git clone https://github.com/your-username/McpBogus.git
+cd McpBogus/McpBogus
+dotnet build
+```
+
+### Configuration
+
+Add the server to your MCP client configuration (e.g., VS Code or Claude Desktop).
+
+**VS Code (`.vscode/mcp.json`):**
 
 ```json
 {
-  "servers": {
+  "mcpServers": {
     "McpBogus": {
-      "type": "stdio",
       "command": "dotnet",
       "args": [
         "run",
         "--project",
-        "<PATH TO PROJECT DIRECTORY>"
+        "${workspaceFolder}/McpBogus/McpBogus.csproj"
       ]
     }
   }
 }
 ```
 
-Refer to the VS Code or Visual Studio documentation for more information on configuring and using MCP servers:
-
-- [Use MCP servers in VS Code (Preview)](https://code.visualstudio.com/docs/copilot/chat/mcp-servers)
-- [Use MCP servers in Visual Studio (Preview)](https://learn.microsoft.com/visualstudio/ide/mcp-servers)
-
-## Testing the MCP Server
-
-Once configured, you can ask Copilot Chat for a random number, for example, `Give me 3 random numbers`. It should prompt you to use the `get_random_number` tool on the `McpBogus` MCP server and show you the results.
-
-## Publishing to NuGet.org
-
-1. Run `dotnet pack -c Release` to create the NuGet package
-2. Publish to NuGet.org with `dotnet nuget push bin/Release/*.nupkg --api-key <your-api-key> --source https://api.nuget.org/v3/index.json`
-
-## Using the MCP Server from NuGet.org
-
-Once the MCP server package is published to NuGet.org, you can configure it in your preferred IDE. Both VS Code and Visual Studio use the `dnx` command to download and install the MCP server package from NuGet.org.
-
-- **VS Code**: Create a `<WORKSPACE DIRECTORY>/.vscode/mcp.json` file
-- **Visual Studio**: Create a `<SOLUTION DIRECTORY>\.mcp.json` file
-
-For both VS Code and Visual Studio, the configuration file uses the following server definition:
+**Claude Desktop (`claude_desktop_config.json`):**
 
 ```json
 {
-  "servers": {
-    "McpBogus": {
-      "type": "stdio",
-      "command": "dnx",
+  "mcpServers": {
+    "bogus": {
+      "command": "dotnet",
       "args": [
-        "<your package ID here>",
-        "--version",
-        "<your package version here>",
-        "--yes"
+        "run",
+        "--project",
+        "C:/Absolute/Path/To/McpBogus/McpBogus.csproj"
       ]
     }
   }
 }
 ```
 
-## More information
+## 🛠️ Available Tools
 
-.NET MCP servers use the [ModelContextProtocol](https://www.nuget.org/packages/ModelContextProtocol) C# SDK. For more information about MCP:
+Once connected, the following tools are available to your AI assistant:
 
-- [Official Documentation](https://modelcontextprotocol.io/)
-- [Protocol Specification](https://spec.modelcontextprotocol.io/)
-- [GitHub Organization](https://github.com/modelcontextprotocol)
-- [MCP C# SDK](https://modelcontextprotocol.github.io/csharp-sdk)
+### Person Tools
+- **GetRandomName**: Generates a random name.
+  - Arguments: `type` ("full", "first", "last") - defaults to "full".
+- **GetRandomEmail**: Generates a random email address.
+- **GetRandomPhone**: Generates a random phone number.
+
+### Address Tools
+- **GetRandomAddress**: Generates a random address.
+  - Arguments: `type` ("full", "street", "city", "state", "zipcode") - defaults to "full".
+
+### Company Tools
+- **GetRandomCompany**: Generates a random company name.
+
+### Text Tools
+- **GetRandomText**: Generates Lorem Ipsum text.
+  - Arguments: `sentences` (int) - Number of sentences to generate (default: 3).
+
+### Date & Time Tools
+- **GetRandomDate**: Generates a random date between two years.
+  - Arguments: `startYear` (int), `endYear` (int).
+
+### Number & Utility Tools
+- **GetRandomNumber**: Generates a random integer between min and max.
+- **GetRandomBoolean**: Generates a random true/false value.
+- **GetRandomGuid**: Generates a random UUID/GUID.
+
+## 🤝 Contributing
+
+Contributions are welcome! This is a public project intended to showcase how to build useful MCP servers with .NET.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+*Built with [ModelContextProtocol .NET SDK](https://github.com/modelcontextprotocol/dotnet-sdk)*
